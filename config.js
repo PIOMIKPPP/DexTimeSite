@@ -27,10 +27,10 @@ window.SITE_CONFIG = {
   // --------------------------------------------------------------------------
   // 2. ОСНОВНЫЕ НАСТРОЙКИ СЕРВЕРА (по умолчанию; меняются в Админке)
   // --------------------------------------------------------------------------
-  SERVER_NAME: "BEDROCK CRAFT",
+  SERVER_NAME: "DEXTIME",
   SERVER_TAGLINE: "Приватный сервер Minecraft 1.21.4 Fabric — индустрия, скиллы и выживание",
   SERVER_NOTICE: "Для входа на сервер скачайте актуальную сборку модов по кнопке ниже",
-  SERVER_IP: "play.myserver.ru",
+  SERVER_IP: "95.216.62.188:25837",
   MINECRAFT_VERSION: "1.21.4",
   MOD_LOADER: "Fabric",
 
@@ -41,8 +41,8 @@ window.SITE_CONFIG = {
   // Просто замените mods/server-mods.zip своим архивом с модами!
   // Если архив больше 100 МБ — загрузите его в GitHub Releases репозитория
   // и вставьте прямую ссылку сюда ИЛИ в Админ-панели (вкладка «Сборка модов»).
-  MODS_DOWNLOAD_URL: "mods/server-mods.zip",
-  MODS_FILENAME: "server-mods-1.21.4-fabric.zip",
+  MODS_DOWNLOAD_URL: "mods/mods.zip",
+  MODS_FILENAME: "mods.zip",
   MODS_VERSION: "v1.0",
   MODS_SIZE: "Архив .zip",
   MODS_UPDATED: "Ноябрь 2026",
@@ -52,7 +52,7 @@ window.SITE_CONFIG = {
   // --------------------------------------------------------------------------
   // 4. ССЫЛКИ В ПОДВАЛЕ И ШАПКЕ (оставьте "", чтобы скрыть кнопку)
   // --------------------------------------------------------------------------
-  DISCORD_URL: "https://discord.gg/",
+  DISCORD_URL: "https://discord.gg/p6svCxC7A",
   TELEGRAM_URL: "https://t.me/",
   GITHUB_URL: "https://github.com/",
   DONATE_URL: "",
