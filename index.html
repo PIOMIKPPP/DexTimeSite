@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#262626" />
+  <meta name="description" content="Официальный сайт и форум сервера Minecraft 1.21.4 Fabric — скачать сборку модов, общение игроков, новости." />
+  <title>BEDROCK CRAFT — Сервер и Форум Minecraft 1.21.4</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 30,9 16,16 2,9' fill='%2327ce40'/%3E%3Cpolygon points='2,9 16,16 16,30 2,23' fill='%234a4a4a'/%3E%3Cpolygon points='30,9 16,16 16,30 30,23' fill='%23303030'/%3E%3Cpolygon points='2,9 16,16 16,20 2,13' fill='%23009147'/%3E%3Cpolygon points='30,9 16,16 16,20 30,13' fill='%23086e38'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans:wght@400;600;700&family=Pixelify+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ======================== ВЕРХНЯЯ ПАНЕЛЬ (#262626) ======================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="#home" class="nav-logo" id="nav-logo">
+        <svg viewBox="0 0 36 36" aria-hidden="true">
+          <polygon points="18,2 33,9.5 18,17 3,9.5" fill="#27ce40" />
+          <polygon points="18,4.2 29,9.5 18,14.8 7,9.5" fill="#3be254" />
+          <polygon points="3,9.5 18,17 18,34 3,26.5" fill="#525252" />
+          <polygon points="33,9.5 18,17 18,34 33,26.5" fill="#383838" />
+          <polygon points="3,9.5 18,17 18,21.5 3,14" fill="#009147" />
+          <polygon points="33,9.5 18,17 18,21.5 33,14" fill="#086e38" />
+          <rect x="7" y="19" width="3" height="3" fill="#3a3a3a" />
+          <rect x="12" y="24" width="3" height="3" fill="#666666" />
+          <rect x="22" y="21" width="3" height="3" fill="#292929" />
+          <rect x="26" y="25" width="3" height="3" fill="#4b4b4b" />
+          <polygon points="18,2 33,9.5 33,26.5 18,34 3,26.5 3,9.5" fill="none" stroke="#000" stroke-width="1.8" />
+        </svg>
+        <span id="nav-server-name">BEDROCK CRAFT</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="#home" class="nav-link active" data-route="home">Главная</a>
+        </li>
+        <li>
+          <a href="#forum" class="nav-link" data-route="forum">Форум</a>
+        </li>
+        <li>
+          <a href="#mods" class="nav-link mods-highlight" data-route="mods">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Моды для сервера
+          </a>
+        </li>
+        <li>
+          <a href="#rules" class="nav-link" data-route="rules">Правила и FAQ</a>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <div id="nav-auth-area"></div>
+        <button class="hamburger-btn" id="hamburger-btn" type="button" aria-label="Меню">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Боковое меню для мобильных (стиль BedrockLauncher) -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Мобильное меню">
+    <h4>Навигация</h4>
+    <a href="#home" data-close-drawer>Главная</a>
+    <a href="#forum" data-close-drawer>Форум сервера</a>
+    <a href="#mods" data-close-drawer>Моды для сервера (.zip)</a>
+    <a href="#rules" data-close-drawer>Правила и FAQ</a>
+    <div id="drawer-auth-links"></div>
+  </aside>
+
+  <!-- ======================== ОСНОВНОЙ КОНТЕНТ ======================== -->
+  <main class="main-wrap">
+    <!-- Полоска важного объявления (управляется из Админки) -->
+    <div class="announcement-bar hidden" id="announcement-bar">
+      <div class="container">
+        <span class="announcement-badge">Объявление</span>
+        <span id="announcement-text"></span>
+      </div>
+    </div>
+
+    <!-- 1. ГЛАВНАЯ СТРАНИЦА -->
+    <section id="view-home" class="view-section">
+      <div class="hero-section">
+        <div class="hero-logo-wrap">
+          <span class="hero-version-tag" id="hero-version-tag">Minecraft 1.21.4 • Fabric</span>
+          <h1 class="hero-title" id="hero-title">BEDROCK CRAFT</h1>
+        </div>
+
+        <p class="hero-tagline" id="hero-tagline">
+          Приватный сервер Minecraft 1.21.4 Fabric — индустрия, скиллы и выживание
+        </p>
+        <p class="hero-notice" id="hero-notice">
+          Для входа на сервер скачайте актуальную сборку модов по кнопке ниже
+        </p>
+
+        <div class="ip-box" title="Нажмите, чтобы скопировать IP сервера">
+          <span class="ip-label">IP сервера</span>
+          <span class="ip-value" id="hero-ip">play.myserver.ru</span>
+          <button class="ip-copy-btn" type="button" id="copy-ip-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="9" y="9" width="13" height="13" rx="1" />
+              <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+            </svg>
+            <span>Копировать</span>
+          </button>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#mods" class="mc-btn lg" id="hero-mods-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            Моды для сервера
+          </a>
+          <a href="#forum" class="mc-btn stone lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            Форум
+          </a>
+          <button type="button" class="mc-btn stone lg" id="hero-secondary-btn">
+            Регистрация
+          </button>
+        </div>
+
+        <button class="scroll-hint" type="button" id="scroll-down-btn" aria-label="Прокрутить вниз">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="home-content" id="home-below">
+        <div class="container">
+          <!-- Счётчики -->
+          <div class="stats-strip">
+            <div class="stat-card">
+              <div class="stat-value" id="stat-threads">0</div>
+              <div class="stat-label">Тем на форуме</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-replies">0</div>
+              <div class="stat-label">Сообщений</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-users">0</div>
+              <div class="stat-label">Участников</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-modver">v1.0</div>
+              <div class="stat-label">Сборка модов</div>
+            </div>
+          </div>
+
+          <!-- Карточки разделов -->
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </div>
+              <h3>Готовая сборка модов</h3>
+              <p>Все нужные моды на Minecraft 1.21.4 Fabric собраны в один ZIP-архив. Скачайте, распакуйте в папку mods и сразу заходите в игру.</p>
+              <div class="feature-action">
+                <a class="mc-btn sm" id="home-quick-download" href="mods/server-mods.zip" download="server-mods-1.21.4-fabric.zip">Скачать .ZIP</a>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <h3>Форум игроков</h3>
+              <p>Создавайте темы, предлагайте новые моды и улучшения, делитесь постройками, ищите команду и получайте помощь от администрации.</p>
+              <div class="feature-action">
+                <a class="mc-btn stone sm" href="#forum">Перейти на форум</a>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3>Честная игра и правила</h3>
+              <p>Активная модерация, стабильная работа без лагов, продуманная прокачка навыков и понятные правила для комфортного выживания.</p>
+              <div class="feature-action">
+                <a class="mc-btn stone sm" href="#rules">Читать правила</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Последние обсуждения форума -->
+          <div class="section-heading">
+            <h2>Последние темы на форуме</h2>
+            <a href="#forum" class="mc-btn sm">Открыть форум</a>
+          </div>
+          <div class="thread-list" id="home-recent-threads"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. СТРАНИЦА ФОРУМА (СПИСОК ТЕМ) -->
+    <section id="view-forum" class="view-section hidden">
+      <div class="page-banner">
+        <h1>Форум сервера</h1>
+        <p>Обсуждения, новости обновлений, предложения по модам и помощь игрокам</p>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div class="forum-toolbar">
+            <div class="forum-toolbar-left">
+              <div class="searchbox">
+                <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="forum-search" placeholder="Поиск по темам и авторам..." autocomplete="off" />
+                <span class="search-count hidden" id="forum-search-count">0</span>
+                <button type="button" class="search-clear hidden" id="forum-search-clear" title="Очистить">&times;</button>
+              </div>
+              <select id="forum-sort" class="mc-select forum-sort" aria-label="Сортировка тем">
+                <option value="active">По активности</option>
+                <option value="newest">Сначала новые</option>
+                <option value="popular">По лайкам</option>
+                <option value="replies">По ответам</option>
+              </select>
+            </div>
+            <button type="button" class="mc-btn" id="new-thread-btn">+ Создать тему</button>
+          </div>
+
+          <div class="category-bar" id="forum-categories"></div>
+          <div class="thread-list" id="forum-thread-list"></div>
+          <div class="pagination" id="forum-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ПРОСМОТР ОДНОЙ ТЕМЫ ФОРУМА -->
+    <section id="view-thread" class="view-section hidden">
+      <div class="page-body">
+        <div class="container">
+          <button type="button" class="go-back-btn" id="back-to-forum-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Назад к форуму
+          </button>
+          <div id="thread-detail-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. СТРАНИЦА «МОДЫ ДЛЯ СЕРВЕРА» -->
+    <section id="view-mods" class="view-section hidden">
+      <div class="page-banner">
+        <h1>Моды для сервера</h1>
+        <p id="mods-banner-sub">Официальная сборка модов Minecraft 1.21.4 Fabric одним архивом</p>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div class="mods-hero-card">
+            <div>
+              <h2 style="font-family: var(--font-display); font-size: 1.55rem; text-shadow: 0 3px 0 #000;">
+                Клиентская сборка сервера
+              </h2>
+              <div class="mods-meta-chips" id="mods-meta-chips"></div>
+              <p id="mods-description" style="color: var(--text-secondary); font-size: 0.95rem;"></p>
+              <div id="mods-admin-shortcut" style="margin-top: 0.9rem;"></div>
+            </div>
+
+            <div class="mods-download-col">
+              <a class="mc-btn lg" id="mods-download-btn" href="mods/server-mods.zip" download="server-mods-1.21.4-fabric.zip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Скачать сборку (.ZIP)
+              </a>
+              <span class="mods-file-note" id="mods-file-note">Файл: mods/server-mods.zip</span>
+              <button type="button" class="flat-btn" id="mods-copy-ip-btn">Скопировать IP сервера</button>
+            </div>
+          </div>
+
+          <div class="section-heading">
+            <h2>Что входит в сборку</h2>
+          </div>
+          <div class="mods-grid" id="mods-list-grid"></div>
+
+          <div class="section-heading">
+            <h2>Как установить моды</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faqdetails" open>
+              <summary><span class="chevron">▶</span> Шаг 1. Установите Minecraft 1.21.4 и Fabric Loader</summary>
+              <div class="faqdetails-content">
+                <ol>
+                  <li>В вашем лаунчере (официальный Minecraft Launcher, Prism Launcher, Modrinth App или др.) выберите версию <strong>Minecraft Java Edition 1.21.4</strong> с загрузчиком <strong>Fabric</strong>.</li>
+                  <li>Рекомендуется выделить игре от <code>4096 МБ</code> (4 ГБ) оперативной памяти в настройках лаунчера.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="faqdetails" open>
+              <summary><span class="chevron">▶</span> Шаг 2. Распакуйте скачанный архив в папку mods</summary>
+              <div class="faqdetails-content">
+                <ol>
+                  <li>Нажмите зелёную кнопку <strong>«Скачать сборку (.ZIP)»</strong> выше.</li>
+                  <li>Откройте папку <code>mods</code> вашего клиента (на Windows нажмите <code>Win + R</code>, введите <code>%appdata%\.minecraft\mods</code> и нажмите Enter).</li>
+                  <li>Очистите старые моды от других версий и перенесите туда все <code>.jar</code> файлы из скачанного архива.</li>
+                </ol>
+              </div>
+            </details>
+            <details class="faqdetails">
+              <summary><span class="chevron">▶</span> Шаг 3. Подключение к серверу и решение ошибок</summary>
+              <div class="faqdetails-content">
+                <p>Запустите игру, откройте <strong>Сетевая игра → Добавить сервер</strong> и вставьте IP <code id="mods-faq-ip">play.myserver.ru</code>. Если при входе появляется ошибка несовпадения модов — создайте тему в разделе <strong>«Моды и техподдержка»</strong> на нашем форуме.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ПРАВИЛА И FAQ -->
+    <section id="view-rules" class="view-section hidden">
+      <div class="page-banner">
+        <h1>Правила и частые вопросы</h1>
+        <p>Основные правила поведения на сервере и форуме</p>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div class="faq-list" id="rules-faq-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. АДМИН-ПАНЕЛЬ СОЗДАТЕЛЯ -->
+    <section id="view-admin" class="view-section hidden">
+      <div class="page-banner">
+        <h1>Админ-панель Создателя</h1>
+        <p>Управление сайтом, сборкой модов, пользователями, ролями и форумом</p>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div id="admin-status-banner"></div>
+          <div class="admin-tabs" id="admin-tabs">
+            <button type="button" class="mc-btn sm" data-admin-tab="general">Настройки сайта</button>
+            <button type="button" class="mc-btn stone sm" data-admin-tab="mods">Сборка модов</button>
+            <button type="button" class="mc-btn stone sm" data-admin-tab="users">Пользователи и роли</button>
+            <button type="button" class="mc-btn stone sm" data-admin-tab="forum">Разделы и темы</button>
+            <button type="button" class="mc-btn stone sm" data-admin-tab="rules">Правила и FAQ</button>
+          </div>
+          <div id="admin-tab-content"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================== ПОДВАЛ (#262626) ======================== -->
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links" id="footer-links"></ul>
+      <hr />
+      <p class="footer-copy" id="footer-copy">© 2026 BEDROCK CRAFT</p>
+      <p class="footer-sub">Не является официальным продуктом Minecraft. Не одобрено Mojang или Microsoft.</p>
+    </div>
+  </footer>
+
+  <!-- ======================== МОДАЛКА АВТОРИЗАЦИИ / РЕГИСТРАЦИИ ======================== -->
+  <div class="modal-backdrop hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="auth-modal-title">Аккаунт игрока</h2>
+        <button type="button" class="modal-close" data-close-modal="auth-modal" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-tabs">
+        <button type="button" class="modal-tab active" data-auth-tab="login">Вход</button>
+        <button type="button" class="modal-tab" data-auth-tab="register">Регистрация</button>
+      </div>
+      <div class="modal-body">
+        <div id="auth-demo-hint" class="demo-hint-box hidden">
+          <span>Демо-вход Создателя: <code id="demo-creds-label">admin / admin123</code></span>
+          <button type="button" class="flat-btn gold-text" id="fill-demo-owner-btn">Подставить</button>
+        </div>
+        <div id="auth-error" class="form-error hidden"></div>
+
+        <!-- Форма входа -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-identity" id="login-identity-label">Логин или Email</label>
+            <input class="mc-input" type="text" id="login-identity" required placeholder="Введите логин или email" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Пароль</label>
+            <input class="mc-input" type="password" id="login-password" required placeholder="Введите пароль" autocomplete="current-password" />
+          </div>
+          <div style="margin-top: 1.15rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="mc-btn" id="login-submit-btn">Войти на сайт</button>
+          </div>
+        </form>
+
+        <!-- Форма регистрации -->
+        <form id="register-form" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-username">Логин на форуме *</label>
+              <input class="mc-input" type="text" id="reg-username" required minlength="3" maxlength="20" placeholder="Steve_2026" autocomplete="username" />
+            </div>
+            <div class="form-group">
+              <label for="reg-mcnick">Ник в Minecraft</label>
+              <input class="mc-input" type="text" id="reg-mcnick" maxlength="20" placeholder="Необязательно" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email *</label>
+            <input class="mc-input" type="email" id="reg-email" required placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-password">Пароль *</label>
+              <input class="mc-input" type="password" id="reg-password" required minlength="6" placeholder="Минимум 6 символов" autocomplete="new-password" />
+            </div>
+            <div class="form-group">
+              <label for="reg-password2">Повтор пароля *</label>
+              <input class="mc-input" type="password" id="reg-password2" required minlength="6" placeholder="Повторите пароль" autocomplete="new-password" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Цвет пиксель-аватара</label>
+            <div class="color-swatches" id="reg-color-swatches"></div>
+          </div>
+          <div style="margin-top: 1.15rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="mc-btn" id="reg-submit-btn">Создать аккаунт</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== МОДАЛКА СОЗДАНИЯ / РЕДАКТИРОВАНИЯ ТЕМЫ ======================== -->
+  <div class="modal-backdrop hidden" id="thread-modal" role="dialog" aria-modal="true" aria-labelledby="thread-modal-title">
+    <div class="modal-window wide">
+      <div class="modal-header">
+        <h2 id="thread-modal-title">Новая тема на форуме</h2>
+        <button type="button" class="modal-close" data-close-modal="thread-modal" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="thread-form-error" class="form-error hidden"></div>
+        <form id="thread-form">
+          <input type="hidden" id="thread-edit-id" value="" />
+          <div class="form-group">
+            <label for="thread-category">Раздел форума</label>
+            <select class="mc-select" id="thread-category" required></select>
+          </div>
+          <div class="form-group">
+            <label for="thread-title-input">Заголовок темы</label>
+            <input class="mc-input" type="text" id="thread-title-input" required minlength="4" maxlength="120" placeholder="О чём вы хотите написать?" />
+          </div>
+          <div class="form-group">
+            <label for="thread-body-input">Сообщение</label>
+            <textarea class="mc-textarea" id="thread-body-input" rows="7" required minlength="5" maxlength="8000" placeholder="Текст темы. Поддерживается **жирный**, *курсив*, `код`, ```блок кода``` и > цитата."></textarea>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem;">
+            <button type="button" class="mc-btn stone sm" data-close-modal="thread-modal">Отмена</button>
+            <button type="submit" class="mc-btn sm" id="thread-submit-btn">Опубликовать</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== МОДАЛКА ПРОФИЛЯ ПОЛЬЗОВАТЕЛЯ ======================== -->
+  <div class="modal-backdrop hidden" id="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="profile-modal-title">Профиль аккаунта</h2>
+        <button type="button" class="modal-close" data-close-modal="profile-modal" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body" id="profile-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Уведомления -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
