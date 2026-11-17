@@ -18,11 +18,11 @@ window.SITE_CONFIG = {
   //
   // После подключения Supabase первый зарегистрировавшийся аккаунт (или аккаунт
   // с указанным ниже OWNER_EMAIL) автоматически получает права СОЗДАТЕЛЯ!
-  SUPABASE_URL: "",       // Например: "https://abcdefghijklm.supabase.co"
-  SUPABASE_ANON_KEY: "",  // Длинный публичный ключ anon/public из Project Settings -> API
+  SUPABASE_URL: "https://rtqvtszilckvvomyzfpu.supabase.co",       // Например: "https://abcdefghijklm.supabase.co"
+  SUPABASE_ANON_KEY: "sb_publishable_t3LFL9KSCqo7gCQQ0vfuoA_h8odr7-I",  // Длинный публичный ключ anon/public из Project Settings -> API
 
   // Email создателя сайта (опционально — для гарантированной выдачи прав Создателя)
-  OWNER_EMAIL: "",
+  OWNER_EMAIL: "arikkorkin5@gmail.com",
 
   // --------------------------------------------------------------------------
   // 2. ОСНОВНЫЕ НАСТРОЙКИ СЕРВЕРА (по умолчанию; меняются в Админке)
